@@ -286,6 +286,168 @@ nav {
     50% { opacity: 0.5; transform: scale(1.2); }
 }
 
+/* ═══════════════════════════════════════ PRO ANIMATIONS ═══════════════════════════════════════ */
+
+/* Pop-In Title Animation */
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(30px);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05) translateY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+h1, h2, h3 {
+    animation: popIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+h1 { animation-delay: 0.2s; }
+h2 { animation-delay: 0.1s; }
+h3 { animation-delay: 0.15s; }
+
+/* Initially hidden until animation plays */
+h1, h2, h3 {
+    opacity: 0;
+}
+
+/* Floating Logo Animation */
+@keyframes floatShake {
+    0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
+    15% { transform: translateY(-15px) scale(1.05) rotate(-2deg); }
+    30% { transform: translateY(-10px) scale(1.03) rotate(2deg); }
+    45% { transform: translateY(-20px) scale(1.08) rotate(-1deg); }
+    60% { transform: translateY(-12px) scale(1.04) rotate(1deg); }
+    75% { transform: translateY(-18px) scale(1.06) rotate(-2deg); }
+    90% { transform: translateY(-8px) scale(1.02) rotate(0.5deg); }
+}
+
+@keyframes logoGlow {
+    0%, 100% { 
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.3),
+                    0 0 40px rgba(0, 217, 255, 0.1);
+    }
+    50% { 
+        box-shadow: 0 0 30px rgba(212, 175, 55, 0.6),
+                    0 0 60px rgba(0, 217, 255, 0.3);
+    }
+}
+
+/* Floating Animated Logo in Corner */
+.floating-logo {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 999;
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, var(--accent-gold), #E6C547);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    animation: floatShake 4s ease-in-out infinite;
+    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.floating-logo:hover {
+    animation: logoGlow 1.5s ease-in-out infinite;
+    transform: scale(1.15) !important;
+}
+
+.floating-logo::before {
+    content: '';
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    border: 2px solid var(--accent-gold);
+    border-radius: 20px;
+    animation: rotateBorder 3s linear infinite;
+    opacity: 0.5;
+}
+
+@keyframes rotateBorder {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* WhatsApp Floating Icon */
+.whatsapp-float {
+    position: fixed;
+    bottom: 40px;
+    right: 180px;
+    z-index: 999;
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, #25D366, #20BA5A);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    animation: floatShake 4s ease-in-out infinite;
+    box-shadow: 0 10px 40px rgba(37, 211, 102, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.15) !important;
+    box-shadow: 0 15px 50px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-float::before {
+    content: '';
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    border: 2px solid #25D366;
+    border-radius: 20px;
+    animation: rotateBorder 3s linear infinite;
+    opacity: 0.5;
+}
+
+/* Responsive Floating Icons */
+@media (max-width: 768px) {
+    .floating-logo {
+        bottom: 20px;
+        right: 20px;
+        width: 90px;
+        height: 90px;
+        font-size: 2rem;
+    }
+    
+    .floating-logo::before {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .whatsapp-float {
+        bottom: 160px;
+        right: 20px;
+        width: 90px;
+        height: 90px;
+        font-size: 2rem;
+    }
+    
+    .whatsapp-float::before {
+        width: 100px;
+        height: 100px;
+    }
+}
+
 .hero-cta {
     display: flex;
     gap: var(--spacing-lg);

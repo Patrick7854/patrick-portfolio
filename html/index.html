@@ -462,7 +462,23 @@
         </div>
     </footer>
 
+    <!-- ═══════════════════════════════════════ FLOATING ANIMATED ICONS ═══════════════════════════════════════ -->
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/256785493158?text=Hi%20Patrick%2C%20I'd%20like%20to%20discuss%20a%20project" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+        📱
+    </a>
+
+    <!-- Logo Button -->
+    <div class="floating-logo" title="Back to top">
+        <img src="../Asset/logo.png" alt="Patrick Hassan Logo" style="width: 100%; height: 100%; object-fit: contain; position: relative; z-index: 1;">
+    </div>
+
     <script>
+        // Floating logo scroll to top
+        document.querySelector('.floating-logo').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
