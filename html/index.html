@@ -19,16 +19,21 @@
                 <div class="nav-logo">
                     <img src="../Asset/logo.png" alt="Patrick Hassan">
                 </div>
-                <div class="nav-links">
+                <div class="nav-links" id="navLinks">
                     <a href="#services">Services</a>
                     <a href="#portfolio">Portfolio</a>
                     <a href="#skills">Skills</a>
                     <a href="#about">About</a>
                     <a href="#contact">Contact</a>
                 </div>
-                <div class="nav-cta">
+                <div class="nav-cta" id="navCta">
                     <a href="#contact" class="btn btn-primary">Get In Touch</a>
                 </div>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </nav>
         </div>
     </header>
@@ -446,6 +451,10 @@
                 <div class="footer-section">
                     <h4>Contact</h4>
                     <p>
+                        <strong>WhatsApp:</strong><br>
+                        <a href="https://wa.me/256785493158" style="color: var(--accent-gold);">+256 785 493 158</a>
+                    </p>
+                    <p style="margin-top: 1rem;">
                         <strong>Email:</strong><br>
                         <a href="mailto:patrickhas2020@gmail.com" style="color: var(--accent-gold);">patrickhas2020@gmail.com</a>
                     </p>
@@ -465,7 +474,10 @@
     <!-- ═══════════════════════════════════════ FLOATING ANIMATED ICONS ═══════════════════════════════════════ -->
     <!-- WhatsApp Button -->
     <a href="https://wa.me/256785493158?text=Hi%20Patrick%2C%20I'd%20like%20to%20discuss%20a%20project" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
-        📱
+        <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004c-1.579 0-3.051.471-4.315 1.364l-.31.205-.321.054-1.333.356 1.218-4.446 2.64-2.494c2.35-2.104 5.78-2.404 8.42-1.154 3.021 1.47 5.02 5.26 4.63 8.847-.388 3.587-3.263 6.315-6.837 6.315h-.003c-1.412 0-2.766-.352-3.966-1.017l-.301-.169-.323.037-1.309.35 1.181-4.32.325-2.306c.069-.496.17-.97.287-1.424" fill="white"/>
+            <circle cx="12" cy="12" r="11" stroke="white" stroke-width="0.5" fill="none"/>
+        </svg>
     </a>
 
     <!-- Logo Button -->
@@ -474,6 +486,33 @@
     </div>
 
     <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const navCta = document.getElementById('navCta');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            navCta.classList.toggle('active');
+        });
+
+        // Close menu when link is clicked
+        document.querySelectorAll('#navLinks a').forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                navCta.classList.remove('active');
+            });
+        });
+
+        // Close menu when CTA button is clicked
+        document.querySelector('#navCta .btn')?.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            navCta.classList.remove('active');
+        });
+
         // Floating logo scroll to top
         document.querySelector('.floating-logo').addEventListener('click', function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
